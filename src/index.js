@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Write from './Write';
-import Save from './Save';
-import Read from './Read';
+import ROMDownload from './ROMDownload';
+import SFDownload from './SFDownload';
 import Title from './Title';
 import { BrowserRouter, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
@@ -15,8 +15,8 @@ ReactDOM.render(
             <div className="App">
                 <Route path="/" exact component={App} />
                 <Route path="/Write" exact component={Write} />
-                <Route path="/Save" exact component={Save} />
-                <Route path="/Read" exact component={Read} />
+                <Route path="/ROMDownload" exact component={ROMDownload} />
+                <Route path="/SFDownload" exact component={SFDownload} />
                 <Route path="/Title" exact component={Title} />
             </div>
         </BrowserRouter>
