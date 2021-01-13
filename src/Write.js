@@ -48,4 +48,8 @@ export default class Write extends React.Component {
             </div>
         );
     }
+
+    componentWillUnmount() {
+        ipcRenderer.removeAllListeners('select-file')
+    }
 }

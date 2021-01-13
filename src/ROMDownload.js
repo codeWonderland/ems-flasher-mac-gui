@@ -54,4 +54,8 @@ export default class ROMDownload extends React.Component {
             </div>
         );
     }
+
+    componentWillUnmount() {
+        ipcRenderer.removeAllListeners('select-file')
+    }
 }

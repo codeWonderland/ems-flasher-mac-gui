@@ -1,6 +1,8 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
 const isDev = require('electron-is-dev');
 const path = require('path');
+const emsFlasherPath = path.join(__dirname, '../public/ems-flasher/');
+const { exec } = require('child_process');
 
 let mainWindow;
 
@@ -32,6 +34,14 @@ function createWindow() {
         }).catch(err => {
             console.log(err);
         })
-    })
+    });
+
+    ipcMain.on('ems-flasher', (event, args) => {
+        exec(`cd ${emsFlasherPath}; ./ems-flasher ${args}`,
+            (error, stdout, stderr) => {
+               event.sender.send('cart-data', stdout);
+            }
+        );
+    });
 }
 app.on('ready', createWindow);
