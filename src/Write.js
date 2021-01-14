@@ -1,55 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const { ipcRenderer } = window.require('electron');
+import EMSFlasher from "./EMSFlasher";
 
-export default class Write extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            currentFile: ""
-        }
-
-        ipcRenderer.on('select-file', function(event, filePath) {
-            this.setState({ currentFile: filePath })
-        }.bind(this))
-    }
-
-    openDialog() {
-        ipcRenderer.send('open-file-dialog', 'write');
-    }
-
-    writeRom() {
-        console.log('writing ROM');
-    }
-
+export default class Write extends EMSFlasher {
     render() {
         return (
-            <div>
-                <Link className="back-arrow" to="/">&lt;- BACK</Link>
-                <h1>Write ROM to Cart:</h1>
+            this.state.loading ?
+                <h1>
+                    Loading...
+                </h1> :
 
-                {this.state.currentFile !== "" ?
+                <div>
+                    <Link className="back-arrow"
+                          to="/">&lt;- BACK</Link>
+                    <h1>Write ROM to Cart</h1>
 
-                    <div>
-                        <p>Current ROM: {this.state.currentFile.split('/').pop()}</p>
+                    <p className="label">Select slot on cartridge to write to</p>
+
+                    {this.renderBanks()}
+
+                    <p className="label">Select ROM or Save (.sav) to Write</p>
+                    {this.state.currentFile !== "" ?
 
                         <div className="flex">
-                            <button className="btn" onClick={this.openDialog}>Change ROM</button>
-                            <button className="btn" onClick={this.writeRom}>Write ROM to Cart</button>
+                            <button className="btn"
+                                    onClick={this.openDialog}>{this.state.currentFile.split('/').pop()}</button>
+                            <button className="btn"
+                                    onClick={this.writeRom}>Write file to Cartridge
+                            </button>
                         </div>
-                    </div>
-                    :
-                    <div className="flex">
-                        <button className="btn" onClick={this.openDialog}>Choose ROM</button>
-                    </div>
-                }
+                        :
+                        <div className="flex">
+                            <button className="btn"
+                                    onClick={this.openDialog}>Choose ROM
+                            </button>
+                        </div>
+                    }
 
-            </div>
+                </div>
+
         );
-    }
-
-    componentWillUnmount() {
-        ipcRenderer.removeAllListeners('select-file')
     }
 }

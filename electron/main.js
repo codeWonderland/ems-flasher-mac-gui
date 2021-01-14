@@ -36,10 +36,30 @@ function createWindow() {
         })
     });
 
+    ipcMain.on('save-file-dialog', (event, fileName) => {
+        dialog.showSaveDialog(mainWindow, {
+            title: fileName
+        }).then(result => {
+            if (result.canceled === false) {
+                event.sender.send('select-file', result.filePaths[0]);
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    });
+
     ipcMain.on('ems-flasher', (event, args) => {
         exec(`cd ${emsFlasherPath}; ./ems-flasher ${args}`,
             (error, stdout, stderr) => {
                event.sender.send('cart-data', stdout);
+            }
+        );
+    });
+
+    ipcMain.on('write-rom', (event, args) => {
+        exec(`cd ${emsFlasherPath}; ./ems-flasher ${args}`,
+            (error, stdout, stderr) => {
+                event.sender.send('rom-status', stdout);
             }
         );
     });
