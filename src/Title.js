@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import EMSFlasher from "./EMSFlasher";
 
 export default class Title extends EMSFlasher {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>

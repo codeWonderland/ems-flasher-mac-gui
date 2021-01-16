@@ -7,8 +7,7 @@ export default class App extends React.Component {
             <div>
                 <h1>EMS Flasher for Mac</h1>
                 <Link className="btn" to="/Write">Write ROM or Save to Cartridge</Link>
-                <Link className="btn" to="/ROMDownload">Download ROM from Cartridge</Link>
-                <Link className="btn" to="/SFDownload">Download Save from Cartridge</Link>
+                <Link className="btn" to="/Download">Download ROM or Save from Cartridge</Link>
                 <Link className="btn" to="/Title">Read Information from Cartridge</Link>
             </div>
         );

@@ -26,8 +26,7 @@ export default class Write extends EMSFlasher {
                             <button className="btn"
                                     onClick={this.openDialog}>{this.state.currentFile.split('/').pop()}</button>
                             <button className="btn"
-                                    onClick={this.writeRom}>Write file to Cartridge
-                            </button>
+                                    onClick={this.writeRom}>Write file to Cartridge</button>
                         </div>
                         :
                         <div className="flex">

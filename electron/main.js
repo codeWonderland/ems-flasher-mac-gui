@@ -38,10 +38,17 @@ function createWindow() {
 
     ipcMain.on('save-file-dialog', (event, fileName) => {
         dialog.showSaveDialog(mainWindow, {
-            title: fileName
+            title: `Save ${fileName}`,
+            defaultPath: fileName,
+            filters: [
+                {name: 'Gameboy Game', extensions: ['gb']},
+                {name: 'Gameboy Advance Game', extensions: ['gba']},
+                {name: 'Gameboy Color Game', extensions: ['gbc']},
+                {name: 'Save File', extensions: ['sav']}
+            ]
         }).then(result => {
             if (result.canceled === false) {
-                event.sender.send('select-file', result.filePaths[0]);
+                event.sender.send('select-file', result.filePath);
             }
         }).catch(err => {
             console.log(err);
@@ -59,9 +66,10 @@ function createWindow() {
     ipcMain.on('write-rom', (event, args) => {
         exec(`cd ${emsFlasherPath}; ./ems-flasher ${args}`,
             (error, stdout, stderr) => {
-                event.sender.send('rom-status', stdout);
+                event.sender.send('rom-status', error === null);
             }
         );
     });
 }
+
 app.on('ready', createWindow);
