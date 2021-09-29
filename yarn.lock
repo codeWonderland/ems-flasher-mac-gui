@@ -6203,9 +6203,9 @@ human-signals@^1.1.1:
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
 i@0.3.x:
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/i/-/i-0.3.6.tgz#d96c92732076f072711b6b10fd7d4f65ad8ee23d"
-  integrity sha1-2WyScyB28HJxG2sQ/X1PZa2O4j0=
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/i/-/i-0.3.7.tgz#2a7437a923d59c14b17243dc63a549af24d85799"
+  integrity sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==
 
 iconv-lite@0.4.24:
   version "0.4.24"
@@ -7588,6 +7588,11 @@ levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libusb@0.0.0-pre:
+  version "0.0.0-pre"
+  resolved "https://registry.yarnpkg.com/libusb/-/libusb-0.0.0-pre.tgz#d0ed0d5de2259eae1063f6cfe63a246c158484bb"
+  integrity sha512-zbiKd6+pqJ/R/RKyOdR4FPfZpxt6WfHevgsCZz/9waLPJ0Hf5frfmZ7oWWYbPV49Qlfa9oNJGdAmuArgo4K3ug==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
